@@ -49,17 +49,28 @@ async function renderNewQuote() {
   startTimer();
 }
 
-let startTime;
-function startTimer() {
-  timerElement.innerText = 0;
-  startTime = new Date();
-  setInterval(() => {
-    timerElement.innerText = getTimerTime();
-  }, 1000);
-}
+let START_TIME = 10;
 
-function getTimerTime() {
-  return Math.floor((new Date() - startTime) / 1000);
+const getTimer = setInterval(() => {
+  timerElement.innerText = START_TIME;
+  START_TIME -= 1;
+  if (START_TIME <= 0 || START_TIME < 1) clearInterval(getTimer);
+}, 1000);
+
+function startTimer() {
+  return getTimer;
 }
+// function startTimer() {
+//   timerElement.innerText = START_TIME;
+//   setInterval(() => {
+//     if (START_TIME === 0) clearInterval(startTimer);
+//     timerElement.innerText = START_TIME;
+//   }, 1000);
+//   START_TIME -= 1;
+// }
+
+// function getTimerTime() {
+//   return (START_TIME -= 1);
+// }
 
 renderNewQuote();
