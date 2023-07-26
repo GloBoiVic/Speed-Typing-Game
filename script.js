@@ -2,6 +2,8 @@ const RANDOM_QUOTE_API_URL = 'https://api.quotable.io/random';
 const quoteDisplayElement = document.getElementById('quoteDisplay');
 const quoteInputElement = document.getElementById('quoteInput');
 const timerElement = document.getElementById('timer');
+const startBtn = document.getElementById('startBtn');
+const resetBtn = document.getElementById('resetBtn');
 
 quoteInputElement.addEventListener('input', () => {
   const arrayQuote = quoteDisplayElement.querySelectorAll('span');
@@ -46,31 +48,35 @@ async function renderNewQuote() {
     quoteDisplayElement.appendChild(characterSpan);
   });
   quoteInputElement.value = null;
-  startTimer();
 }
 
 let START_TIME = 10;
+// let interval;
 
+// debugger;
 const getTimer = setInterval(() => {
   timerElement.innerText = START_TIME;
   START_TIME -= 1;
-  if (START_TIME <= 0 || START_TIME < 1) clearInterval(getTimer);
+  if (START_TIME <= 0) clearInterval(getTimer);
 }, 1000);
 
-function startTimer() {
-  return getTimer;
-}
 // function startTimer() {
 //   timerElement.innerText = START_TIME;
-//   setInterval(() => {
-//     if (START_TIME === 0) clearInterval(startTimer);
+//   interval = setInterval(() => {
+//     START_TIME -= 1;
 //     timerElement.innerText = START_TIME;
-//   }, 1000);
-//   START_TIME -= 1;
+//     if (START_TIME <= 0) {
+//       clearInterval(interval);
+//       interval = null;
+//     }
+//   });
 // }
 
-// function getTimerTime() {
-//   return (START_TIME -= 1);
-// }
+function startTimer() {
+  return (START_TIME -= 1);
+}
+startBtn.addEventListener('click', () => {
+  startTimer();
+});
 
-renderNewQuote();
+document.addEventListener('DOMContentLoaded', renderNewQuote);
