@@ -51,32 +51,21 @@ async function renderNewQuote() {
 }
 
 let START_TIME = 10;
-// let interval;
-
-// debugger;
-const getTimer = setInterval(() => {
-  START_TIME -= 1;
-  timerElement.innerText = START_TIME;
-  if (START_TIME <= 0) clearInterval(getTimer);
-}, 1000);
-
-// function startTimer() {
-//   timerElement.innerText = START_TIME;
-//   interval = setInterval(() => {
-//     START_TIME -= 1;
-//     timerElement.innerText = START_TIME;
-//     if (START_TIME <= 0) {
-//       clearInterval(interval);
-//       interval = null;
-//     }
-//   });
-// }
+timerElement.innerText = START_TIME;
+let getTimer;
 
 function startTimer() {
-  return getTimer;
+  getTimer = setInterval(() => {
+    START_TIME -= 1;
+    timerElement.innerText = START_TIME;
+    if (START_TIME <= 0) clearInterval(getTimer);
+  }, 1000);
 }
+
 startBtn.addEventListener('click', () => {
   startTimer();
 });
+
+// TODO: Add reset timer
 
 document.addEventListener('DOMContentLoaded', renderNewQuote);
