@@ -65,3 +65,29 @@ body,
   color: #c81e1e;
   text-decoration: underline;
 }
+
+.btn-controls {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.4em;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  width: 60px;
+  margin-top: 1rem;
+}
+
+.start-btn {
+  background-color: hsl(120, 87%, 40%);
+}
+
+.reset-btn {
+  background-color: hsl(0, 100%, 60%);
+}
