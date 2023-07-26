@@ -55,8 +55,8 @@ let START_TIME = 10;
 
 // debugger;
 const getTimer = setInterval(() => {
-  timerElement.innerText = START_TIME;
   START_TIME -= 1;
+  timerElement.innerText = START_TIME;
   if (START_TIME <= 0) clearInterval(getTimer);
 }, 1000);
 
@@ -73,7 +73,7 @@ const getTimer = setInterval(() => {
 // }
 
 function startTimer() {
-  return (START_TIME -= 1);
+  return getTimer;
 }
 startBtn.addEventListener('click', () => {
   startTimer();
